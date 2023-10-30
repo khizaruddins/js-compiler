@@ -39,10 +39,10 @@ export class CodeEditorComponent {
         try {
           const data = eval(divElement.innerText);
           this.editorData.emit(data);
-          // console.clear();
+          console.clear();
         } catch (e)  {
           this.editorData.emit(e);
-          // console.clear();
+          console.clear();
         }
       });
 
