@@ -15,6 +15,7 @@ export class CodeEditorComponent {
   constructor(private elementRef: ElementRef) {}
   @Output() editorData = new EventEmitter();
   showPlaceholder = true;
+  editorValue = '';
 
   ngAfterViewInit() {
     this.createDebouncedObservable();
@@ -23,9 +24,6 @@ export class CodeEditorComponent {
   onEditorEdit(event: any) {
     if (event.data !== '') {
       this.showPlaceholder = false;
-    } 
-    if (event.data === null) {
-      this.showPlaceholder = true;
     }
   }
   createDebouncedObservable() {
@@ -43,6 +41,10 @@ export class CodeEditorComponent {
         } catch (e)  {
           this.editorData.emit(e);
           console.clear();
+        }
+        this.editorValue = divElement.innerText;
+        if (this.editorValue === '') {
+          this.showPlaceholder = true;
         }
       });
 
