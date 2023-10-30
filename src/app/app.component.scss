@@ -1,4 +1,8 @@
 .main-wrapper {
   display: grid;
   grid-template-columns: 50% 50%;
+  @media(max-width: 768px) {
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 1fr;
+  }
 }

@@ -21,7 +21,6 @@ export class CodeEditorComponent {
   }
 
   onEditorEdit(event: any) {
-    console.log(event.data);
     if (event.data !== '') {
       this.showPlaceholder = false;
     } 

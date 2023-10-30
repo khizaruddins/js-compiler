@@ -11,4 +11,7 @@
     content: attr(placeholder);
     color: #aaa;
   }
+  @media (max-width: 768px) {
+    height: 50vh;
+  }
 }
