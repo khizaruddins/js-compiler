@@ -14,11 +14,21 @@ export class CodeEditorComponent {
   private destroy$ = new Subject<void>();
   constructor(private elementRef: ElementRef) {}
   @Output() editorData = new EventEmitter();
+  showPlaceholder = true;
 
   ngAfterViewInit() {
     this.createDebouncedObservable();
   }
 
+  onEditorEdit(event: any) {
+    console.log(event.data);
+    if (event.data !== '') {
+      this.showPlaceholder = false;
+    } 
+    if (event.data === null) {
+      this.showPlaceholder = true;
+    }
+  }
   createDebouncedObservable() {
     const divElement = this.elementRef.nativeElement.querySelector('.editor');
     fromEvent(divElement, 'input')
@@ -30,10 +40,10 @@ export class CodeEditorComponent {
         try {
           const data = eval(divElement.innerText);
           this.editorData.emit(data);
-          console.clear();
+          // console.clear();
         } catch (e)  {
           this.editorData.emit(e);
-          console.clear();
+          // console.clear();
         }
       });
 

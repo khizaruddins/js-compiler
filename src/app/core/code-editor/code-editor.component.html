@@ -1,1 +1,1 @@
-<div class="editor" #editorInput [contentEditable]="true"></div>
+<div class="editor" (input)="onEditorEdit($event)" placeholder="Write javascript here" #editorInput [contentEditable]="true" [ngClass]="{'showPlaceholder': showPlaceholder}"></div>

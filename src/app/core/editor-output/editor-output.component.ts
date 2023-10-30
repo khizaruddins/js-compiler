@@ -9,5 +9,19 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./editor-output.component.scss']
 })
 export class EditorOutputComponent {
-  @Input() editorData: any;
+  _editorData: any;
+  @Input() set editorData(value: any) {
+    if (!value) {
+      this.counter = 0;
+    }
+    this.showPlaceholder = this.counter >= 1 ? false: true;
+    this._editorData = value;
+    this.counter += 1;
+  }
+  get editorData() {
+    return this._editorData;
+  }
+  counter = 0;
+
+  showPlaceholder = true;
 }
